@@ -5,7 +5,6 @@ import { LuTreePalm } from "react-icons/lu";
 import { GoUnlock } from "react-icons/go";
 import { CiWallet } from "react-icons/ci";
 import { TbArrowsUpDown } from "react-icons/tb";
-import { DiVim } from "react-icons/di";
 
 const Dashboard = () => {
   const requests: {
