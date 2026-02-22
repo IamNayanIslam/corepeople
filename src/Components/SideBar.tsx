@@ -65,7 +65,7 @@ const SideBar = () => {
   flex flex-col p-2 bg-slate-50 h-screen transition-all duration-300 ease-in-out
   ${sidebarState.isCollapsed ? "w-20" : "w-64"}
 `}>
-        <div className="flex gap-2 items-center mb-4 p-2 rounded-md hover:bg-gray-100 transition-all duration-300">
+        <div className={`flex flex-col p-2 bg-slate-50 h-screen transition-all duration-300 ease-in-out fixed md:relative z-50 ${sidebarState.isMobileOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"} ${sidebarState.isCollapsed ? "md:w-20" : "md:w-64"}`}>
             <div className="text-4xl text-amber-400">
                 <SiSemanticuireact />
             </div>

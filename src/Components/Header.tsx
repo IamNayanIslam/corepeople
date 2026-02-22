@@ -9,7 +9,11 @@ const Header = () => {
     const {sidebarDispatch} = useContext(SidebarContext);
 
     const toggleSidebar = () =>{
-        sidebarDispatch({type: "TOGGLE_IS_COLLAPSED"})
+        if(window.innerWidth > 768){
+            sidebarDispatch({type: "TOGGLE_IS_COLLAPSED"})
+        }else{
+            sidebarDispatch({type: "TOGGLE_IS_MOBILE_OPEN"})
+        }
     }
     const location = useLocation();
 
