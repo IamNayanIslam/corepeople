@@ -24,15 +24,17 @@ const Header = () => {
                 return "Expenses";
             case "/yearinreview":
                 return "Year In Review";
+            case "/account/profile":
+                return "";
             default:
                 return path;
         }
     }
     
   return (
-    <div>
+    <div className="flex gap-4 px-4 py-6">
        <button> <VscLayoutSidebarLeftOff /></button>
-       <p className="capitalize">User name <MdArrowForwardIos /> {getPath(pathname)}</p>
+       <p className="capitalize flex gap-2 items-center">User name <MdArrowForwardIos /> {getPath(pathname)}</p>
     </div>
   )
 }

@@ -1,8 +1,14 @@
-
+import Header from '../Components/Header'
+import SideBar from '../Components/SideBar'
 
 const YearInReview = () => {
   return (
-    <div>YearInReview</div>
+    <div className='flex'>
+        <SideBar/>
+        <main>
+            <Header/>
+        </main>
+    </div>
   )
 }
 

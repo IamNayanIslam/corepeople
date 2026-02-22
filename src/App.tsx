@@ -24,6 +24,7 @@ function App() {
           <Route path="/accesses" element={<Accesses/>}/>
           <Route path="/expenses" element={<Expenses/>}/>
           <Route path="/yearinreview" element={<YearInReview/>}/>
+          <Route path="/account/profile" element={<YearInReview/>}/>
           <Route path="*" element={<NotFound404/>}/>
         </Routes>
       </BrowserRouter>

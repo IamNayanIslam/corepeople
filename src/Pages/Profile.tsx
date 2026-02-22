@@ -1,8 +1,7 @@
-
 import Header from '../Components/Header'
 import SideBar from '../Components/SideBar'
 
-const Today = () => {
+const Profile = () => {
   return (
     <div className='flex'>
         <SideBar/>
@@ -13,4 +12,4 @@ const Today = () => {
   )
 }
 
-export default Today
+export default Profile

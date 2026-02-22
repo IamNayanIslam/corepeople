@@ -1,8 +1,15 @@
+import Header from "../Components/Header"
+import SideBar from "../Components/SideBar"
 
 
 const Expenses = () => {
   return (
-    <div>Expenses</div>
+    <div className='flex'>
+        <SideBar/>
+        <main>
+            <Header/>
+        </main>
+    </div>
   )
 }
 
