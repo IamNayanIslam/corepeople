@@ -1,9 +1,16 @@
 import { VscLayoutSidebarLeftOff } from "react-icons/vsc";
 import { MdArrowForwardIos } from "react-icons/md";
 import { useLocation } from "react-router-dom";
+import { useContext } from "react";
+import { SidebarContext } from "../Contexts/SidebarContext";
 
 
 const Header = () => {
+    const {sidebarDispatch} = useContext(SidebarContext);
+
+    const toggleSidebar = () =>{
+        sidebarDispatch({type: "TOGGLE_IS_COLLAPSED"})
+    }
     const location = useLocation();
 
     const pathname = location.pathname;
@@ -33,7 +40,7 @@ const Header = () => {
     
   return (
     <div className="flex gap-4 px-4 py-6">
-       <button> <VscLayoutSidebarLeftOff /></button>
+       <button onClick={toggleSidebar}> <VscLayoutSidebarLeftOff /></button>
        <p className="capitalize flex gap-2 items-center">User name <MdArrowForwardIos /> {getPath(pathname)}</p>
     </div>
   )

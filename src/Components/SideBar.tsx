@@ -8,9 +8,11 @@ import { GoUnlock } from "react-icons/go";
 import { CiWallet } from "react-icons/ci";
 import { MdOutlineDateRange } from "react-icons/md";
 import { RiArrowUpDownLine } from "react-icons/ri";
-import type { JSX } from "react";
+import { useContext, type JSX } from "react";
+import { SidebarContext } from "../Contexts/SidebarContext";
 
 const SideBar = () => {
+    const {sidebarState} = useContext(SidebarContext);
     const menueItems: {
         id: string,
         label: string,
@@ -59,20 +61,26 @@ const SideBar = () => {
         }
     ]
   return (
-        <div className="flex flex-col p-2 bg-slate-50 h-screen">
-        <div className="flex gap-2 items-center mb-4 p-2 rounded-md hover:bg-gray-100">
+        <div className={`
+  flex flex-col p-2 bg-slate-50 h-screen transition-all duration-300 ease-in-out
+  ${sidebarState.isCollapsed ? "w-20" : "w-64"}
+`}>
+        <div className="flex gap-2 items-center mb-4 p-2 rounded-md hover:bg-gray-100 transition-all duration-300">
             <div className="text-4xl text-amber-400">
                 <SiSemanticuireact />
             </div>
 
+            {
+            !sidebarState.isCollapsed && 
             <div className="flex flex-col items-start justify-center">
                 <p className="font-medium text-sm">CorePeople</p>
                 <p className="truncate text-xs">@nCoded Solutions</p>
             </div>
+            }
         </div>
         <ul className="flex flex-col gap-1">
             {
-                menueItems.map((item)=> <li className="capitalize text-sm p-2 rounded-md hover:bg-gray-100" key={item.id}><NavLink className="flex gap-1 items-center" to={item.path}>{item.icon}{item.label}</NavLink></li>)
+                menueItems.map((item)=> <li className="capitalize text-sm p-2 rounded-md hover:bg-gray-100" key={item.id}><NavLink className="flex gap-1 items-center" to={item.path}>{item.icon}{!sidebarState.isCollapsed && item.label}</NavLink></li>)
             }
         </ul>
         <div className="flex-1">
@@ -80,10 +88,12 @@ const SideBar = () => {
         </div>
         <div className="flex items-center gap-3 hover:bg-gray-100 p-2 rounded-md">
             <div className="w-[32px] h-[32px] rounded-xl bg-gray-200"></div>
-            <div>
+            {!sidebarState.isCollapsed &&
+                <div>
                 <p className="font-medium text-sm">User Name</p>
                 <p className="text-xs">user@corepeople.com</p>
             </div>
+            }
             <RiArrowUpDownLine />
 
         </div>
