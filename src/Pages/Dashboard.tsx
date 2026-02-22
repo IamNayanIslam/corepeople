@@ -1,8 +1,15 @@
-import React from 'react'
+
+import Header from '../Components/Header'
+import SideBar from '../Components/SideBar'
 
 const Dashboard = () => {
   return (
-    <div>Dashboard</div>
+    <div className='flex'>
+        <SideBar/>
+        <main>
+            <Header/>
+        </main>
+    </div>
   )
 }
 

@@ -1,8 +1,11 @@
-import React from 'react'
+
+import Header from '../Components/Header'
 
 const Today = () => {
   return (
-    <div>Today</div>
+    <div>
+        <Header/>
+    </div>
   )
 }
 
