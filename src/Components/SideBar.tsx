@@ -68,7 +68,7 @@ const SideBar = () => {
             <SiSemanticuireact />
           </div>
 
-          {!sidebarState.isCollapsed && (
+          {(!sidebarState.isCollapsed || sidebarState.isMobileOpen) && (
             <div className="flex flex-col items-start justify-center">
               <p className="font-medium text-sm">CorePeople</p>
               <p className="truncate text-xs">@nCoded Solutions</p>
@@ -100,13 +100,15 @@ const SideBar = () => {
         <div className="flex-1"></div>
         <div className="flex items-center gap-3 hover:bg-gray-100 p-2 rounded-md">
           <div className="w-[32px] h-[32px] rounded-xl bg-gray-200"></div>
-          {!sidebarState.isCollapsed && (
+          {(!sidebarState.isCollapsed || sidebarState.isMobileOpen) && (
             <div>
               <p className="font-medium text-sm">User Name</p>
               <p className="text-xs">user@corepeople.com</p>
             </div>
           )}
-          {!sidebarState.isCollapsed && <RiArrowUpDownLine />}
+          {(!sidebarState.isCollapsed || sidebarState.isMobileOpen) && (
+            <RiArrowUpDownLine className="ml-auto" />
+          )}
         </div>
       </div>
     </>
