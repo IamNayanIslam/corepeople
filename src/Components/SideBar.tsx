@@ -12,93 +12,97 @@ import { useContext, type JSX } from "react";
 import { SidebarContext } from "../Contexts/SidebarContext";
 
 const SideBar = () => {
-    const {sidebarState} = useContext(SidebarContext);
-    const menueItems: {
-        id: string,
-        label: string,
-        path: string,
-        icon: JSX.Element
-    }[] = [
-        {id: "dashboard",
-            label: "dashboard",
-            path: "/",
-            icon: <IoHomeOutline />
-
-        },
-        {id: "today",
-            label: "today",
-            path: "/today",
-            icon: <HiOutlineBolt />
-        },
-        {id: "presence",
-            label: "presence",
-            path: "/presence",
-            icon: <RiRobot2Line />
-
-        },
-        {id: "leaves",
-            label: "leaves",
-            path: "/leaves",
-            icon: <LuTreePalm />
-
-        },
-        {id: "accesses",
-            label: "accesses",
-            path: "/accesses",
-            icon: <GoUnlock />
-        },
-        {id: "expenses",
-            label: "expenses",
-            path: "/expenses",
-            icon: <CiWallet />
-
-        },
-        {id: "year in review",
-            label: "year in review",
-            path: "/yearinreview",
-            icon: <MdOutlineDateRange />
-
-        }
-    ]
+  const { sidebarState } = useContext(SidebarContext);
+  const menueItems: {
+    id: string;
+    label: string;
+    path: string;
+    icon: JSX.Element;
+  }[] = [
+    { id: "dashboard", label: "dashboard", path: "/", icon: <IoHomeOutline /> },
+    { id: "today", label: "today", path: "/today", icon: <HiOutlineBolt /> },
+    {
+      id: "presence",
+      label: "presence",
+      path: "/presence",
+      icon: <RiRobot2Line />,
+    },
+    { id: "leaves", label: "leaves", path: "/leaves", icon: <LuTreePalm /> },
+    {
+      id: "accesses",
+      label: "accesses",
+      path: "/accesses",
+      icon: <GoUnlock />,
+    },
+    {
+      id: "expenses",
+      label: "expenses",
+      path: "/expenses",
+      icon: <CiWallet />,
+    },
+    {
+      id: "year in review",
+      label: "year in review",
+      path: "/yearinreview",
+      icon: <MdOutlineDateRange />,
+    },
+  ];
   return (
-        <div className={`
-  flex flex-col p-2 bg-slate-50 h-screen transition-all duration-300 ease-in-out
-  ${sidebarState.isCollapsed ? "w-20" : "w-64"}
-`}>
-        <div className={`flex flex-col p-2 bg-slate-50 h-screen transition-all duration-300 ease-in-out fixed md:relative z-50 ${sidebarState.isMobileOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"} ${sidebarState.isCollapsed ? "md:w-20" : "md:w-64"}`}>
-            <div className="text-4xl text-amber-400">
-                <SiSemanticuireact />
-            </div>
-
-            {
-            !sidebarState.isCollapsed && 
-            <div className="flex flex-col items-start justify-center">
-                <p className="font-medium text-sm">CorePeople</p>
-                <p className="truncate text-xs">@nCoded Solutions</p>
-            </div>
-            }
+    <div
+      className={`
+    flex flex-col p-2 bg-slate-50 h-screen border-r-2 border-r-gray-100 transition-all duration-200 ease-linear
+    fixed md:relative z-50 ${sidebarState.isMobileOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"} ${sidebarState.isCollapsed ? "md:w-20 items-center" : "md:w-64"}
+  `}
+    >
+      <div
+        className={`flex items-center gap-2 p-2 hover:bg-slate-100 rounded-md`}
+      >
+        <div className="text-4xl text-amber-400">
+          <SiSemanticuireact />
         </div>
-        <ul className="flex flex-col gap-1">
-            {
-                menueItems.map((item)=> <li className="capitalize text-sm p-2 rounded-md hover:bg-gray-100" key={item.id}><NavLink className="flex gap-1 items-center" to={item.path}>{item.icon}{!sidebarState.isCollapsed && item.label}</NavLink></li>)
-            }
-        </ul>
-        <div className="flex-1">
 
-        </div>
-        <div className="flex items-center gap-3 hover:bg-gray-100 p-2 rounded-md">
-            <div className="w-[32px] h-[32px] rounded-xl bg-gray-200"></div>
-            {!sidebarState.isCollapsed &&
-                <div>
-                <p className="font-medium text-sm">User Name</p>
-                <p className="text-xs">user@corepeople.com</p>
-            </div>
-            }
-            <RiArrowUpDownLine />
+        {!sidebarState.isCollapsed && (
+          <div className="flex flex-col items-start justify-center">
+            <p className="font-medium text-sm">CorePeople</p>
+            <p className="truncate text-xs">@nCoded Solutions</p>
+          </div>
+        )}
+      </div>
+      <ul className="flex flex-col gap-1">
+        {menueItems.map((item) => (
+          <li
+            className="capitalize text-md p-2 rounded-md hover:bg-gray-100"
+            key={item.id}
+          >
+            <NavLink className="flex items-center" to={item.path}>
+              <span
+                className={`text-xl shrink-0 ${sidebarState.isCollapsed ? "mx-auto" : "mr-3"}`}
+              >
+                {item.icon}
+              </span>
 
-        </div>
+              {!sidebarState.isCollapsed && (
+                <span className="whitespace-nowrap transition-all duration-300">
+                  {item.label}
+                </span>
+              )}
+            </NavLink>
+          </li>
+        ))}
+      </ul>
+      <div className="flex-1"></div>
+      <div className="flex items-center gap-3 hover:bg-gray-100 p-2 rounded-md">
+        <div className="w-[32px] h-[32px] rounded-xl bg-gray-200"></div>
+        {!sidebarState.isCollapsed && (
+          <div>
+            <p className="font-medium text-sm">User Name</p>
+            <p className="text-xs">user@corepeople.com</p>
+          </div>
+        )}
+        {!sidebarState.isCollapsed && <RiArrowUpDownLine />}
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default SideBar
+export default SideBar;
