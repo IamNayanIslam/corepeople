@@ -44,7 +44,7 @@ const Dashboard = () => {
             <div className="bg-white w-full rounded-xl flex flex-col md:flex-row justify-center md:justfity-between p-4 gap-4">
               {requests.map((request) => (
                 <div
-                  className="flex flex-col justify-center items-center px-6 py-4 rounded-xl border-2 border-gray-200 w-full md:w-1/6 transition-all duration-300 hover:bg-gray-100"
+                  className="flex flex-col flex-1 justify-center items-center px-6 py-2 rounded-xl border-2 border-gray-200 w-full md:w-1/6 transition-all duration-300 hover:bg-gray-100"
                   key={request.id}
                 >
                   <p className="text-center">{request.icon}</p>
