@@ -57,7 +57,7 @@ const SideBar = () => {
       )}
       <div
         className={`
-    flex flex-col p-2 bg-slate-50 h-screen overflow-hidden border-r-2 border-r-gray-100 transition-all duration-200 ease-linear
+    flex flex-col p-2 bg-slate-50 min-h-[100dvh] overflow-hidden border-r-2 border-r-gray-100 transition-all duration-200 ease-linear
     fixed md:relative z-50 ${sidebarState.isMobileOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"} ${sidebarState.isCollapsed ? "md:w-20 items-center" : "md:w-64"}
   `}
       >
